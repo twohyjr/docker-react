@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+services:
+    - docker
+
+before_install: #before our tests get ran
+    - docker build -t twohyjr/docker-react -f Dockerfile.dev .
+
+script: #contains all the commands to run our test suite
+    - docker run -e CI=true twohyjr/docker-react npm run test
+    - 
